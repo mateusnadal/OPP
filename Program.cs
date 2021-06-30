@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Globalization;
+using Models;
 
 namespace OOP
 {
@@ -7,42 +8,37 @@ namespace OOP
     {
         static void Main(string[] args)
         {
-            double xA, xB, xC, yA, yB, yC;
-
-            Console.WriteLine("Entre com as medidas do trigangulo X");
-            xA = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
-            xB = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
-            xC = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
-
-            Console.WriteLine("Entre com as medidas do trigangulo Y");
-            yA = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
-            yB = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
-            yC = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
-
-            double p = (xA + xB + xC) / 2.0;
-            double areaX = Math.Sqrt(p * (p - xA) * (p - xB) * (p - xC));
-
-            p = (yA + yB + yC) / 2.0;
-
-            double areaY = Math.Sqrt(p * (p - yA) * (p - yB) * (p - yC));
 
 
-            Console.WriteLine("Area de x =" + areaX.ToString("f4", CultureInfo.InvariantCulture));
-            Console.WriteLine("Area de y =" + areaY.ToString("f4", CultureInfo.InvariantCulture));
+            Triangulo x, y;
 
+            x = new Triangulo();
+            y = new Triangulo();
 
+            Console.WriteLine("Entre com as medidas do triângulo X:");
+            x.LadoA = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+            x.LadoB = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+            x.LadoC = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
 
+            Console.WriteLine("Entre com as medidas do triângulo Y:");
+            y.LadoA = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+            y.LadoB = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+            y.LadoC = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+
+            double p = (x.LadoA + x.LadoB + x.LadoB) / 2.0;
+            double areaX = Math.Sqrt(p * (p - x.LadoA) * (p - x.LadoB) * (p - x.LadoC));
+            p = (y.LadoA + y.LadoB + y.LadoC) / 2.0;
+            double areaY = Math.Sqrt(p * (p - y.LadoA) * (p - y.LadoB) * (p - y.LadoC));
+            Console.WriteLine("Área de X = " + areaX.ToString("F4", CultureInfo.InvariantCulture));
+            Console.WriteLine("Área de Y = " + areaY.ToString("F4", CultureInfo.InvariantCulture));
             if (areaX > areaY)
             {
-                Console.WriteLine("A area x é maior");
+                Console.WriteLine("Maior área: X");
             }
             else
             {
-                Console.WriteLine("A area x é maior");
-
+                Console.WriteLine("Maior área: Y");
             }
-
-
         }
     }
 }
